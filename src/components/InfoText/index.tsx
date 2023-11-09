@@ -1,46 +1,74 @@
-import React from 'react';
-import EventDescription from '../EventDescription';
-import EventInfos from '../EventInfos/index';
-import HeadingText from '../HeadingText';
+import React from "react";
+
+import HeadingText from "../HeadingText";
+import Highlight from "../Highlight";
+
+import { Calendar2Event, ClockFill, Pin } from "react-bootstrap-icons";
 
 interface InfoTextProps {
-    days: number[];
-    month: string;
-    beginningTime: string;
-    endTime: string;
+  days: number[];
+  month: string;
+  beginningTime: string;
+  endTime: string;
 }
 
-const InfoText: React.FC<InfoTextProps> = ({ days, month, beginningTime, endTime }) => {
-    return (
-        <>
-            <HeadingText text="O que é o Fallstack?" />
-            <EventInfos days={days} month={month} beginningTime={beginningTime} endTime={endTime} />
+const InfoText: React.FC<InfoTextProps> = ({
+  days,
+  month,
+  beginningTime,
+  endTime,
+}) => {
+  return (
+    <section className="z-10 flex min-h-[50vh] flex-col gap-y-12">
+      <HeadingText text="Fallstack" />
 
-            <EventDescription>
-                <p className="text-justify">
-                    O evento Fallstack do Instituto Superior de Engenharia do Porto está finalmente
-                    de volta para mais uma edição imperdível! Este evento, já na sua 5ª edição,
-                    realiza-se nos dias {days.join(' e ')} de {month}, e proporciona a oportunidade
-                    única a finalistas de Engenharia Informática de contactarem com diversas
-                    empresas, oferecendo inúmeras possíveis oportunidades de estágio curricular.
-                </p>
+      <section className="flex flex-col items-center justify-between gap-x-24 gap-y-12 text-center text-2xl md:flex-row md:gap-y-6 md:text-left">
+        <article className="flex w-full flex-col gap-y-6">
+          <div className="flex items-center gap-x-6">
+            <div className="h-[40px] w-[40px]">
+              <Calendar2Event width={40} height={40} />
+            </div>
+            <Highlight color="primary" tilt="left" height={7} largeHeight={9}>
+              {days.join(" e ")} de {month}
+            </Highlight>
+          </div>
+          <div className="flex items-center gap-x-6">
+            <div className="h-[40px] w-[40px]">
+              <ClockFill width={40} height={40} />
+            </div>
+            <Highlight color="accent" tilt="right" height={7} largeHeight={9}>
+              {beginningTime} - {endTime}
+            </Highlight>
+          </div>
+          <div className="flex w-full items-center gap-x-6">
+            <div className="h-[40px] w-[40px]">
+              <Pin width={40} height={40} />
+            </div>
+            Instituto Superior de Engenharia do Porto
+          </div>
+        </article>
+        <article className="flex flex-col gap-y-6 text-2xl">
+          <p>
+            O <span className="font-bold text-primary">Fallstack</span>{" "}
+            aproxima, todos os anos, estudantes do curso de Engenharia
+            Informática do{" "}
+            <span className="font-bold">
+              Instituto Superior de Engenharia do Porto
+            </span>{" "}
+            de empresas que atuam no setor informático.
+          </p>
 
-                <p className="text-justify">
-                    É gratuito a todos os estudantes e contempla duas atividades: a Sessão de
-                    Entrevistas e o Connection's Train. No primeiro dia, decorre a Sessão de
-                    Entrevistas, cujo objetivo é as empresas participantes darem-se a conhecer aos
-                    estudantes, desde a área onde trabalham até às propostas de estágio.
-                </p>
-
-                <p className="mt-4 text-justify">
-                    {' '}
-                    No segundo dia, é a vez do Connection's Train, onde os estudantes poderão
-                    interagir diretamente com todas as empresas presentes e esclarecer eventuais
-                    dúvidas que possam ter surgido ou ainda obter mais informações sobre as mesmas.
-                </p>
-            </EventDescription>
-        </>
-    );
+          <p>
+            Graças a este evento, os estudantes têm uma oportunidade única de
+            <span className="font-bold text-primary"> interagir</span> com
+            empresas diretamente ao longo de dois dias de evento repletos de
+            <span className="font-bold text-primary"> partilha</span> de
+            conhecimento e experiências.
+          </p>
+        </article>
+      </section>
+    </section>
+  );
 };
 
 export default InfoText;

@@ -22,6 +22,6 @@
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/no-empty-function": "off",
     "react-hooks/rules-of-hooks": "warn",
-    "tailwindcss/classnames-order": "error"
+    "tailwindcss/classnames-order": "warn"
   }
 }
